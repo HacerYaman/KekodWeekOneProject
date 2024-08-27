@@ -1,5 +1,15 @@
 <resources>
     <string name="app_name">KekodWeekOneProject</string>
-    <string name="welcome_to_keepbalance">Wellcome to KeepBalance</string>
+    <string name="welcome_to_keepbalance">Wellcome to  Soul State</string>
+    <string name="soul_state">soul\nstate</string>
     <string name="lorem">Sed eu ultrices nisl, ut viverra nulla. Mauris aliquet dui ac blandit eleifend.</string>
+    <string name="welcome_detail">Healthy life is having a healthy mind so build a healthy mind then the healthy body.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="giving">Giving</string>
+    <string name="happiness">Happiness</string>
+    <string name="ego">Ego</string>
+    <string name="kindness">Kindness</string>
+    <string name="respect">Respect</string>
+    <string name="optimism">Optimism</string>
 </resources>
