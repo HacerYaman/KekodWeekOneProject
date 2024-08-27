@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">KekodWeekOneProject</string>
+    <string name="welcome_to_keepbalance">Wellcome to KeepBalance</string>
+    <string name="lorem">Sed eu ultrices nisl, ut viverra nulla. Mauris aliquet dui ac blandit eleifend.</string>
 </resources>
