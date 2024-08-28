@@ -14,7 +14,6 @@ object UseCaseModule {
     @Provides
     fun provideToggleEgoSwitchUseCase(): ToggleEgoSwitchUseCase {
         return ToggleEgoSwitchUseCase(
-            // Pass any dependencies here if needed
         )
     }
 }

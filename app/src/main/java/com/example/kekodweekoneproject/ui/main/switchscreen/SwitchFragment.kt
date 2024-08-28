@@ -30,13 +30,13 @@ class SwitchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.switchState.observe(viewLifecycleOwner) { state ->
-            // Update switch states based on the current state
             binding.happiness.isChecked = state.happiness
             binding.optimism.isChecked = state.optimism
             binding.kindness.isChecked = state.kindness
             binding.giving.isChecked = state.giving
             binding.respect.isChecked = state.respect
             binding.ego.isChecked = state.ego
+            binding.egoKillsTw.visibility= state.egoTextVisibility
         }
 
         binding.ego.setOnCheckedChangeListener { _, isChecked ->
