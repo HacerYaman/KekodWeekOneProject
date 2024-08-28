@@ -1,5 +1,6 @@
 package com.example.kekodweekoneproject.ui.main.switchscreen
 
+import android.view.Menu
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,11 +9,13 @@ import com.example.kekodweekoneproject.domain.SwitchState
 import com.example.kekodweekoneproject.domain.usecase.SwitchType
 import com.example.kekodweekoneproject.domain.usecase.ToggleEgoSwitchUseCase
 import com.example.kekodweekoneproject.domain.usecase.ToggleOtherSwitchUseCase
+import com.example.kekodweekoneproject.domain.usecase.UpdateBottomNavUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class SwitchViewModel @Inject constructor(
+    private val updateBottomNavUseCase: UpdateBottomNavUseCase,
     private val toggleEgoSwitchUseCase: ToggleEgoSwitchUseCase,
     private val toggleOtherSwitchUseCase: ToggleOtherSwitchUseCase
 ) : ViewModel() {
@@ -28,5 +31,11 @@ class SwitchViewModel @Inject constructor(
     fun onOtherSwitchToggled(switchType: SwitchType, isOn: Boolean) {
         val newState = toggleOtherSwitchUseCase.execute(_switchState.value!!, switchType, isOn)
         _switchState.value = newState
+    }
+
+    fun updateBottomNavigation(menu: Menu) {
+        _switchState.value?.let { state ->
+            updateBottomNavUseCase.execute(menu, state)
+        }
     }
 }

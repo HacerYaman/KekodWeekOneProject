@@ -2,6 +2,7 @@ package com.example.kekodweekoneproject.di
 
 
 import com.example.kekodweekoneproject.domain.usecase.ToggleEgoSwitchUseCase
+import com.example.kekodweekoneproject.domain.usecase.UpdateBottomNavUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,5 +16,10 @@ object UseCaseModule {
     fun provideToggleEgoSwitchUseCase(): ToggleEgoSwitchUseCase {
         return ToggleEgoSwitchUseCase(
         )
+    }
+
+    @Provides
+    fun provideUpdateBottomNavUseCase(): UpdateBottomNavUseCase {
+        return UpdateBottomNavUseCase()
     }
 }
