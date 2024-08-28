@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/favoritesFragment">
+    app:startDestination="@id/welcomeFragment">
 
     <fragment
         android:id="@+id/favoritesFragment"
@@ -22,5 +22,13 @@
         <action
             android:id="@+id/action_switchFragment_to_favoritesFragment"
             app:destination="@id/favoritesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.example.kekodweekoneproject.ui.welcome.WelcomeFragment"
+        android:label="WelcomeFragment" >
+        <action
+            android:id="@+id/action_welcomeFragment_to_switchFragment"
+            app:destination="@id/switchFragment" />
     </fragment>
 </navigation>

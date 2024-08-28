@@ -1,6 +1,7 @@
 package com.example.kekodweekoneproject.domain
 
-import android.view.View.GONE
+import android.support.annotation.StringRes
+import com.example.kekodweekoneproject.R
 
 data class SwitchState(
     val happiness: Boolean = false,
@@ -8,6 +9,6 @@ data class SwitchState(
     val kindness: Boolean = false,
     val giving: Boolean = false,
     val respect: Boolean = false,
-    val ego: Boolean = false,
-    val egoTextVisibility: Int= GONE
+    val ego: Boolean = true,
+    @StringRes val egoText: Int = R.string.ego_kills_everything
 )

@@ -12,5 +12,7 @@
     <string name="kindness">Kindness</string>
     <string name="respect">Respect</string>
     <string name="optimism">Optimism</string>
-    <string name="ego_kills_everything">ego kills everything</string>
+    <string name="ego_kills_everything">"Your ego is your soul's worst enemy."</string>
+    <string name="main">main</string>
+    <string name="balance">"Balance is not something you find. It’s something you create."</string>
 </resources>

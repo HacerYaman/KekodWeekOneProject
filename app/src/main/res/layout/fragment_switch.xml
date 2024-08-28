@@ -42,7 +42,6 @@
         android:textAlignment="center"
         android:textColor="@color/dark_blue"
         android:textSize="@dimen/text_size_big"
-        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/soul_state_tw" />

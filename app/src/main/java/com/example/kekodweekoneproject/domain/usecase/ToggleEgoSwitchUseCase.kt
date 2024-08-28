@@ -1,7 +1,6 @@
 package com.example.kekodweekoneproject.domain.usecase
 
-import android.view.View.GONE
-import android.view.View.VISIBLE
+import com.example.kekodweekoneproject.R
 import com.example.kekodweekoneproject.domain.SwitchState
 import javax.inject.Inject
 
@@ -16,12 +15,12 @@ class ToggleEgoSwitchUseCase @Inject constructor(
                 kindness = false,
                 giving = false,
                 respect = false,
-                egoTextVisibility = VISIBLE,
+                egoText = R.string.ego_kills_everything,
             )
         } else {
             currentState.copy(
-                egoTextVisibility = GONE
-            )
+                egoText = R.string.balance,
+                )
         }
     }
 }

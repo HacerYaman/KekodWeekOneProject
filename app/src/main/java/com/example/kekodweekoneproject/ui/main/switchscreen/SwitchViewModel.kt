@@ -1,9 +1,9 @@
 package com.example.kekodweekoneproject.ui.main.switchscreen
 
-import android.view.View.VISIBLE
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.kekodweekoneproject.R
 import com.example.kekodweekoneproject.domain.SwitchState
 import com.example.kekodweekoneproject.domain.usecase.SwitchType
 import com.example.kekodweekoneproject.domain.usecase.ToggleEgoSwitchUseCase
@@ -21,7 +21,7 @@ class SwitchViewModel @Inject constructor(
     val switchState: LiveData<SwitchState> get() = _switchState
 
     fun onEgoSwitchToggled(isOn: Boolean) {
-        val newState = toggleEgoSwitchUseCase.execute(_switchState.value!!.copy(ego = isOn, egoTextVisibility = VISIBLE))
+        val newState = toggleEgoSwitchUseCase.execute(_switchState.value!!.copy(ego = isOn, egoText = R.string.ego_kills_everything))
         _switchState.value = newState
     }
 
