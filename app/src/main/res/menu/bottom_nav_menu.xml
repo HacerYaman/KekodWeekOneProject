@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/givingFragment"
+        android:icon="@drawable/ic_giving"
+        android:title="@string/giving" />
+
+    <item
+        android:id="@+id/happinessFragment"
+        android:icon="@drawable/ic_happiness"
+        android:title="@string/happiness" />
+
+    <item
+        android:id="@+id/respectFragment"
+        android:icon="@drawable/ic_optimism"
+        android:title="@string/respect" />
+
+    <item
+        android:id="@+id/kindnessFragment"
+        android:icon="@drawable/ic_happiness"
+        android:title="@string/kindness" />
+
+    <item
+        android:id="@+id/optimismFragment"
+        android:icon="@drawable/respect"
+        android:title="@string/optimism" />
+</menu>
