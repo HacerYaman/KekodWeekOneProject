@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/soul_state_tw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_bold"
@@ -33,7 +33,7 @@
         app:layout_constraintTop_toBottomOf="@+id/image" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/ego_kills_tw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -42,9 +42,10 @@
         android:textAlignment="center"
         android:textColor="@color/dark_blue"
         android:textSize="@dimen/text_size_big"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/soul_state_tw" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -54,7 +55,7 @@
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2">
+        app:layout_constraintTop_toBottomOf="@+id/ego_kills_tw">
 
         <!-- First Row -->
         <LinearLayout
@@ -92,6 +93,7 @@
 
 
                 <com.google.android.material.materialswitch.MaterialSwitch
+                    android:id="@+id/happiness"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -123,6 +125,7 @@
 
 
                 <com.google.android.material.materialswitch.MaterialSwitch
+                    android:id="@+id/optimism"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -163,6 +166,7 @@
                     android:textSize="@dimen/text_size_small" />
 
                 <com.google.android.material.materialswitch.MaterialSwitch
+                    android:id="@+id/kindness"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -192,6 +196,7 @@
                     android:textSize="@dimen/text_size_small" />
 
                 <com.google.android.material.materialswitch.MaterialSwitch
+                    android:id="@+id/giving"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -232,6 +237,7 @@
                     android:textSize="@dimen/text_size_small" />
 
                 <com.google.android.material.materialswitch.MaterialSwitch
+                    android:id="@+id/respect"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -261,6 +267,7 @@
                     android:textSize="@dimen/text_size_small" />
 
                 <com.google.android.material.materialswitch.MaterialSwitch
+                    android:id="@+id/ego"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
