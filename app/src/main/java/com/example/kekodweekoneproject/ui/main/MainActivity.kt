@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
             if (destination.id == R.id.welcomeFragment) {
                 binding.bottomNav.visibility = View.GONE
             } else {
-                binding.bottomNav.visibility == View.VISIBLE
+               // binding.bottomNav.visibility = View.VISIBLE
             }
         }
     }

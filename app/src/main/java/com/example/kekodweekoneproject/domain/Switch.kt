@@ -11,4 +11,7 @@ data class SwitchState(
     val respect: Boolean = false,
     val ego: Boolean = true,
     @StringRes val egoText: Int = R.string.ego_kills_everything
-)
+){
+    val activeCount: Int
+        get() = listOf(happiness, optimism, kindness, giving, respect).count { it }
+}
