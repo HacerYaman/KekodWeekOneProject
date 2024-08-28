@@ -26,6 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="@string/welcome_to_keepbalance"
+        android:fontFamily="@font/poppins_bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:textSize="24sp"
@@ -40,8 +41,9 @@
         android:layout_height="wrap_content"
         android:textSize="16sp"
         android:layout_marginTop="32dp"
+        android:fontFamily="@font/poppins_regular"
         android:textAlignment="center"
-        android:text="@string/lorem"
+        android:text="@string/welcome_detail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/welcome_text">
