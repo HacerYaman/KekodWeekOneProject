@@ -1,5 +1,6 @@
 package com.example.kekodweekoneproject.ui.main.switchscreen
 
+import android.app.AlertDialog
 import android.graphics.drawable.TransitionDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -44,21 +45,21 @@ class SwitchFragment : Fragment() {
             binding.respect.isChecked = state.respect
             binding.ego.isChecked = state.ego
 
-            if (state.ego) {
-                binding.egoKillsTw.text = getString(R.string.ego_kills_everything)
+            binding.egoKillsTw.text = if (state.ego) {
+                getString(R.string.ego_kills_everything)
             } else {
-                binding.egoKillsTw.text = getString(R.string.balance)
-            }
-
-            val backgroundResource = if (state.ego) {
-                R.drawable.gradient_background_ego
-            } else {
-                R.drawable.gradient_background
+                getString(R.string.balance)
             }
 
             applyBackgroundTransition(view, state)
 
             viewModel.updateBottomNavigation(bottomNavigationView.menu)
+        }
+
+        viewModel.showPopup.observe(viewLifecycleOwner) { showPopup ->
+            if (showPopup) {
+                showPopupDialog()
+            }
         }
 
         binding.ego.setOnCheckedChangeListener { _, isChecked ->
@@ -94,24 +95,26 @@ class SwitchFragment : Fragment() {
             state.activeCount == 3 -> R.drawable.gradient_green_three
             state.activeCount == 4 -> R.drawable.gradient_green_four
             state.activeCount == 5 -> R.drawable.gradient_green_five
-            else -> R.drawable.gradient_background // default background
+            else -> R.drawable.gradient_background
         }
 
-        // Create TransitionDrawable with two layers: current and new background
         val transitionDrawable = TransitionDrawable(
             arrayOf(
-                view.background, // Current background
+                view.background,
                 requireContext().getDrawable(backgroundResource)
             )
         )
-
-        // Set TransitionDrawable as the background
         view.background = transitionDrawable
-
-        // Start the transition
-        transitionDrawable.startTransition(500) // Transition duration in milliseconds
+        transitionDrawable.startTransition(500)
     }
 
+    private fun showPopupDialog() {
+        AlertDialog.Builder(requireContext())
+            .setTitle("Nothing is perfect!")
+            .setMessage("The number of active switches cannot exceed 5.")
+            .setPositiveButton(android.R.string.ok, null)
+            .show()
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

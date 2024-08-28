@@ -17,11 +17,14 @@ import javax.inject.Inject
 class SwitchViewModel @Inject constructor(
     private val updateBottomNavUseCase: UpdateBottomNavUseCase,
     private val toggleEgoSwitchUseCase: ToggleEgoSwitchUseCase,
-    private val toggleOtherSwitchUseCase: ToggleOtherSwitchUseCase
+    private val toggleOtherSwitchUseCase: ToggleOtherSwitchUseCase,
 ) : ViewModel() {
 
     private val _switchState = MutableLiveData(SwitchState())
     val switchState: LiveData<SwitchState> get() = _switchState
+
+    private val _showPopup = MutableLiveData<Boolean>()
+    val showPopup: LiveData<Boolean> get() = _showPopup
 
     fun onEgoSwitchToggled(isOn: Boolean) {
         val newState = toggleEgoSwitchUseCase.execute(_switchState.value!!.copy(ego = isOn, egoText = R.string.ego_kills_everything))
@@ -38,4 +41,12 @@ class SwitchViewModel @Inject constructor(
             updateBottomNavUseCase.execute(menu, state)
         }
     }
+
+    private fun checkActiveCount(state: SwitchState) {
+        _showPopup.value = state.activeCount > 5
+    }
+
+//    val backgroundResource: LiveData<Int> = Transformations.map(_switchState) { state ->
+//        getBackgroundResourceUseCase.execute(state)
+//    }
 }
