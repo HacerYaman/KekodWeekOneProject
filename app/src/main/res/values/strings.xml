@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">KekodWeekOneProject</string>
-    <string name="welcome_to_keepbalance">Wellcome to  Soul State</string>
+    <string name="welcome_to_keepbalance">Wellcome to\nSoul State</string>
     <string name="soul_state">soul\nstate</string>
     <string name="lorem">Sed eu ultrices nisl, ut viverra nulla. Mauris aliquet dui ac blandit eleifend.</string>
     <string name="welcome_detail">Healthy life is having a healthy mind so build a healthy mind then the healthy body.</string>
