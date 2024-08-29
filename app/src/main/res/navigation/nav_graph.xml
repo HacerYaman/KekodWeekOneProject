@@ -16,17 +16,58 @@
     </fragment>
     <fragment
         android:id="@+id/switchFragment"
-        android:name="com.example.kekodweekoneproject.ui.main.switchscreen.SwitchFragment"
+        android:name="com.example.kekodweekoneproject.ui.switchscreen.SwitchFragment"
         android:label="fragment_switch"
         tools:layout="@layout/fragment_switch" >
         <action
             android:id="@+id/action_switchFragment_to_favoritesFragment"
             app:destination="@id/favoritesFragment" />
+        <action
+            android:id="@+id/action_switchFragment_to_happyFragment"
+            app:destination="@id/happyFragment" />
+        <action
+            android:id="@+id/action_switchFragment_to_givingFragment"
+            app:destination="@id/givingFragment" />
+        <action
+            android:id="@+id/action_switchFragment_to_respectFragment"
+            app:destination="@id/respectFragment" />
+        <action
+            android:id="@+id/action_switchFragment_to_kindnessFragment"
+            app:destination="@id/kindnessFragment" />
+        <action
+            android:id="@+id/action_switchFragment_to_optimismFragment"
+            app:destination="@id/optimismFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/happyFragment"
+        android:name="com.example.kekodweekoneproject.ui.detail.HappyFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_happy" />
+    <fragment
+        android:id="@+id/kindnessFragment"
+        android:name="com.example.kekodweekoneproject.ui.detail.KindnessFragment"
+        android:label="fragment_kindness"
+        tools:layout="@layout/fragment_kindness" />
+    <fragment
+        android:id="@+id/givingFragment"
+        android:name="com.example.kekodweekoneproject.ui.detail.GivingFragment"
+        android:label="fragment_giving"
+        tools:layout="@layout/fragment_giving" />
+    <fragment
+        android:id="@+id/optimismFragment"
+        android:name="com.example.kekodweekoneproject.ui.detail.OptimismFragment"
+        android:label="fragment_optimism"
+        tools:layout="@layout/fragment_optimism" />
+    <fragment
+        android:id="@+id/respectFragment"
+        android:name="com.example.kekodweekoneproject.ui.detail.RespectFragment"
+        android:label="fragment_respect"
+        tools:layout="@layout/fragment_respect" />
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="com.example.kekodweekoneproject.ui.welcome.WelcomeFragment"
-        android:label="WelcomeFragment" >
+        android:label="fragment_welcome"
+        tools:layout="@layout/fragment_welcome" >
         <action
             android:id="@+id/action_welcomeFragment_to_switchFragment"
             app:destination="@id/switchFragment" />

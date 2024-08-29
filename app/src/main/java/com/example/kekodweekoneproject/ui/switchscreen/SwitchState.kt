@@ -1,4 +1,4 @@
-package com.example.kekodweekoneproject.domain
+package com.example.kekodweekoneproject.ui.switchscreen
 
 import android.support.annotation.StringRes
 import com.example.kekodweekoneproject.R

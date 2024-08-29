@@ -1,4 +1,4 @@
-package com.example.kekodweekoneproject.ui.main.switchscreen
+package com.example.kekodweekoneproject.ui.switchscreen
 
 import android.app.AlertDialog
 import android.graphics.drawable.TransitionDrawable
@@ -7,11 +7,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import com.example.kekodweekoneproject.R
 import com.example.kekodweekoneproject.databinding.FragmentSwitchBinding
-import com.example.kekodweekoneproject.domain.SwitchState
-import com.example.kekodweekoneproject.domain.usecase.SwitchType
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -22,7 +21,6 @@ class SwitchFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel by viewModels<SwitchViewModel>()
-    private lateinit var bottomNavigationView: BottomNavigationView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,8 +33,6 @@ class SwitchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        bottomNavigationView = requireActivity().findViewById(R.id.bottomNav)
-
         viewModel.switchState.observe(viewLifecycleOwner) { state ->
             binding.happiness.isChecked = state.happiness
             binding.optimism.isChecked = state.optimism
@@ -45,21 +41,10 @@ class SwitchFragment : Fragment() {
             binding.respect.isChecked = state.respect
             binding.ego.isChecked = state.ego
 
-            binding.egoKillsTw.text = if (state.ego) {
-                getString(R.string.ego_kills_everything)
-            } else {
-                getString(R.string.balance)
-            }
+            binding.egoKillsTw.text = getString(state.egoText)
 
             applyBackgroundTransition(view, state)
-
-            viewModel.updateBottomNavigation(bottomNavigationView.menu)
-        }
-
-        viewModel.showPopup.observe(viewLifecycleOwner) { showPopup ->
-            if (showPopup) {
-                showPopupDialog()
-            }
+            toggleBottomNavigationView(state.ego)
         }
 
         binding.ego.setOnCheckedChangeListener { _, isChecked ->
@@ -67,25 +52,32 @@ class SwitchFragment : Fragment() {
         }
 
         binding.happiness.setOnCheckedChangeListener { _, isChecked ->
-            viewModel.onOtherSwitchToggled(SwitchType.Happiness, isChecked)
+            viewModel.onOtherSwitchToggled(SwitchViewModel.SwitchType.Happiness, isChecked)
         }
 
         binding.optimism.setOnCheckedChangeListener { _, isChecked ->
-            viewModel.onOtherSwitchToggled(SwitchType.Optimism, isChecked)
+            viewModel.onOtherSwitchToggled(SwitchViewModel.SwitchType.Optimism, isChecked)
         }
 
         binding.kindness.setOnCheckedChangeListener { _, isChecked ->
-            viewModel.onOtherSwitchToggled(SwitchType.Kindness, isChecked)
+            viewModel.onOtherSwitchToggled(SwitchViewModel.SwitchType.Kindness, isChecked)
         }
 
         binding.giving.setOnCheckedChangeListener { _, isChecked ->
-            viewModel.onOtherSwitchToggled(SwitchType.Giving, isChecked)
+            viewModel.onOtherSwitchToggled(SwitchViewModel.SwitchType.Giving, isChecked)
         }
 
         binding.respect.setOnCheckedChangeListener { _, isChecked ->
-            viewModel.onOtherSwitchToggled(SwitchType.Respect, isChecked)
+            viewModel.onOtherSwitchToggled(SwitchViewModel.SwitchType.Respect, isChecked)
         }
     }
+
+    private fun toggleBottomNavigationView(isEgoOn: Boolean) {
+        val activity = requireActivity() as AppCompatActivity
+        val bottomNavigationView = activity.findViewById<BottomNavigationView>(R.id.bottomNav)
+        bottomNavigationView.visibility = if (isEgoOn) View.GONE else View.VISIBLE
+    }
+
 
     private fun applyBackgroundTransition(view: View, state: SwitchState) {
         val backgroundResource = when {
