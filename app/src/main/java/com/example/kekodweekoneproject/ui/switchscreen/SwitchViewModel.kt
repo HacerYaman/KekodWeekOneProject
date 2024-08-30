@@ -30,6 +30,8 @@ class SwitchViewModel @Inject constructor(
             _switchState.value = newState
             updateBottomNavigation(menu)
         } else {
+            val newState = executeOtherSwitch(_switchState.value!!, switchType, isOn)
+            _switchState.value = newState
             showMaxItemsReachedMessage()
         }
     }

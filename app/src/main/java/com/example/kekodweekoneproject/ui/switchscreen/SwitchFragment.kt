@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.kekodweekoneproject.R
 import com.example.kekodweekoneproject.databinding.FragmentSwitchBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -49,6 +50,11 @@ class SwitchFragment : Fragment() {
 
             applyBackgroundTransition(view, state)
             toggleBottomNavigationView(state.ego)
+        }
+
+        binding.button.setOnClickListener {
+            findNavController().navigate(R.id.action_switchFragment_to_favoritesFragment)
+            bottomNavigationView.visibility= View.GONE
         }
 
         binding.ego.setOnCheckedChangeListener { _, isChecked ->
