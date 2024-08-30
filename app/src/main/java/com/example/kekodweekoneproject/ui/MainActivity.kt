@@ -2,11 +2,13 @@ package com.example.kekodweekoneproject.ui
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
+import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI
 import com.example.kekodweekoneproject.R
 import com.example.kekodweekoneproject.databinding.ActivityMainBinding
 import com.example.kekodweekoneproject.ui.switchscreen.SwitchViewModel
@@ -25,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        enableEdgeToEdge()
 
         switchViewModel = ViewModelProvider(this).get(SwitchViewModel::class.java)
 
@@ -37,9 +40,28 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNav)
-        NavigationUI.setupWithNavController(bottomNavigationView, navController)
+//        NavigationUI.setupWithNavController(bottomNavigationView, navController)
 
+        bottomNavigationView.setOnItemSelectedListener { a->
+            val navOptions = NavOptions.Builder()
+                .setLaunchSingleTop(true)
+                .setPopUpTo(
+                    navController.graph.findStartDestination().id,
+                    false,
+                    saveState = true
+                )
+                .setRestoreState(true)
+                .build()
+            navController.navigate(a.itemId, null, navOptions)
+            true
+        }
     }
+
+//    private fun replaceFragment(fragment: Fragment){
+//        val fragmentManager= supportFragmentManager
+//        val fragmentTransaction = fragmentManager.beginTransaction()
+//        fragmentTransaction.replace(R.id.)
+//    }
 
     fun toggleBottomNavVisibility(isEgo: Boolean) {
         if (isEgo) {

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.kekodweekoneproject.R
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -25,6 +26,7 @@ class HappyFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_happy, container, false)
         val quoteTextView = view.findViewById<TextView>(R.id.quoteTextView)
         val favoriteIcon = view.findViewById<ImageView>(R.id.favoriteIcon)
+        val backButton = view.findViewById<ImageView>(R.id.imageView2)
 
         viewModel.randomQuote.observe(viewLifecycleOwner) { quote ->
             quoteTextView.text = quote
@@ -38,6 +40,10 @@ class HappyFragment : Fragment() {
                      isFavorite = false
                 }
             }
+        }
+
+        backButton.setOnClickListener {
+            findNavController().navigateUp()
         }
 
         viewModel.getRandomQuote()

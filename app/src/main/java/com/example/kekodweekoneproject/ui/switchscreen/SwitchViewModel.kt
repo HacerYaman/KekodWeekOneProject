@@ -14,9 +14,6 @@ class SwitchViewModel @Inject constructor(
 
     private val _switchState = MutableLiveData(SwitchState())
     val switchState: LiveData<SwitchState> get() = _switchState
-
-    private val _showPopup = MutableLiveData<Boolean>()
-    val showPopup: LiveData<Boolean> get() = _showPopup
     
     fun onEgoSwitchToggled(isOn: Boolean) {
         val newState = execute(_switchState.value!!.copy(ego = isOn))
