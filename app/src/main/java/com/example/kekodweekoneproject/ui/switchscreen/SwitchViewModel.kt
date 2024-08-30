@@ -17,25 +17,20 @@ class SwitchViewModel @Inject constructor(
 
     private val _showPopup = MutableLiveData<Boolean>()
     val showPopup: LiveData<Boolean> get() = _showPopup
-
-    private val _isBottomNavVisible = MutableLiveData<Boolean>()
-    val isBottomNavVisible: LiveData<Boolean> get() = _isBottomNavVisible
-
+    
     fun onEgoSwitchToggled(isOn: Boolean) {
         val newState = execute(_switchState.value!!.copy(ego = isOn))
         _switchState.value = newState
-
-        _isBottomNavVisible.value = !isOn
     }
 
-    fun onOtherSwitchToggled(switchType: SwitchType, isOn: Boolean) {
-        val newState = executeOtherSwitch(_switchState.value!!, switchType, isOn)
-        _switchState.value = newState
-    }
-
-    fun updateBottomNavigation(menu: Menu) {
-        _switchState.value?.let { state ->
-            execute(menu, state)
+    fun onOtherSwitchToggled(switchType: SwitchType, isOn: Boolean, menu: Menu) {
+        val currentActiveCount = _switchState.value!!.activeCount
+        if (currentActiveCount < 4 || !isOn) {
+            val newState = executeOtherSwitch(_switchState.value!!, switchType, isOn)
+            _switchState.value = newState
+            updateBottomNavigation(menu)
+        } else {
+            showMaxItemsReachedMessage()
         }
     }
 
@@ -74,43 +69,45 @@ class SwitchViewModel @Inject constructor(
         Happiness, Optimism, Kindness, Giving, Respect
     }
 
-    private fun execute(menu: Menu, state: SwitchState) {
+
+    private fun updateBottomNavigation(menu: Menu) {
         menu.clear()
 
-        var order = 1
-        var addedCount = 0
+        val state = _switchState.value!!
 
         if (state.ego) {
-            menu.add(0, R.id.nav_main, 0, R.string.main)
+            menu.add(0, R.id.switchFragment, 0, R.string.main)
                 .setIcon(R.drawable.ic_lotus_empty)
         } else {
-            if (state.happiness && addedCount < 4) {
-                menu.add(0, R.id.happiness, order++, R.string.happiness)
+            var order = 1
+
+            if (state.happiness) {
+                menu.add(0, R.id.happyFragment, order++, R.string.happiness)
                     .setIcon(R.drawable.ic_happiness)
-                addedCount++
             }
-            if (state.optimism && addedCount < 4) {
-                menu.add(0, R.id.optimism, order++, R.string.optimism)
+            if (state.optimism) {
+                menu.add(0, R.id.optimismFragment, order++, R.string.optimism)
                     .setIcon(R.drawable.ic_optimism)
-                addedCount++
             }
-            if (state.kindness && addedCount < 4) {
-                menu.add(0, R.id.kindness, order++, R.string.kindness)
+            if (state.kindness) {
+                menu.add(0, R.id.kindnessFragment, order++, R.string.kindness)
                     .setIcon(R.drawable.ic_kindness)
-                addedCount++
             }
-            if (state.giving && addedCount < 4) {
-                menu.add(0, R.id.giving, order++, R.string.giving)
+            if (state.giving) {
+                menu.add(0, R.id.givingFragment, order++, R.string.giving)
                     .setIcon(R.drawable.ic_giving)
-                addedCount++
             }
-            if (state.respect && addedCount < 4) {
-                menu.add(0, R.id.respect, order++, R.string.respect)
+            if (state.respect) {
+                menu.add(0, R.id.respectFragment, order++, R.string.respect)
                     .setIcon(R.drawable.respecttt)
-                addedCount++
             }
-            menu.add(0, R.id.nav_main, 0, R.string.main)
+            menu.add(0, R.id.switchFragment, 0, R.string.main)
                 .setIcon(R.drawable.ic_lotus_empty)
         }
     }
+
+    private fun showMaxItemsReachedMessage() {
+        print("asdasdas")
+    }
+
 }

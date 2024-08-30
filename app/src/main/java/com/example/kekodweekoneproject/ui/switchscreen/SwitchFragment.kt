@@ -33,6 +33,10 @@ class SwitchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val activity = requireActivity() as AppCompatActivity
+        val bottomNavigationView = activity.findViewById<BottomNavigationView>(R.id.bottomNav)
+        val menu = bottomNavigationView.menu
+
         viewModel.switchState.observe(viewLifecycleOwner) { state ->
             binding.happiness.isChecked = state.happiness
             binding.optimism.isChecked = state.optimism
@@ -52,23 +56,23 @@ class SwitchFragment : Fragment() {
         }
 
         binding.happiness.setOnCheckedChangeListener { _, isChecked ->
-            viewModel.onOtherSwitchToggled(SwitchViewModel.SwitchType.Happiness, isChecked)
+            viewModel.onOtherSwitchToggled(SwitchViewModel.SwitchType.Happiness, isChecked, menu)
         }
 
         binding.optimism.setOnCheckedChangeListener { _, isChecked ->
-            viewModel.onOtherSwitchToggled(SwitchViewModel.SwitchType.Optimism, isChecked)
+            viewModel.onOtherSwitchToggled(SwitchViewModel.SwitchType.Optimism, isChecked, menu)
         }
 
         binding.kindness.setOnCheckedChangeListener { _, isChecked ->
-            viewModel.onOtherSwitchToggled(SwitchViewModel.SwitchType.Kindness, isChecked)
+            viewModel.onOtherSwitchToggled(SwitchViewModel.SwitchType.Kindness, isChecked, menu)
         }
 
         binding.giving.setOnCheckedChangeListener { _, isChecked ->
-            viewModel.onOtherSwitchToggled(SwitchViewModel.SwitchType.Giving, isChecked)
+            viewModel.onOtherSwitchToggled(SwitchViewModel.SwitchType.Giving, isChecked, menu)
         }
 
         binding.respect.setOnCheckedChangeListener { _, isChecked ->
-            viewModel.onOtherSwitchToggled(SwitchViewModel.SwitchType.Respect, isChecked)
+            viewModel.onOtherSwitchToggled(SwitchViewModel.SwitchType.Respect, isChecked, menu)
         }
     }
 
@@ -77,7 +81,6 @@ class SwitchFragment : Fragment() {
         val bottomNavigationView = activity.findViewById<BottomNavigationView>(R.id.bottomNav)
         bottomNavigationView.visibility = if (isEgoOn) View.GONE else View.VISIBLE
     }
-
 
     private fun applyBackgroundTransition(view: View, state: SwitchState) {
         val backgroundResource = when {
