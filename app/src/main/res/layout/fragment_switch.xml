@@ -47,6 +47,7 @@
         app:layout_constraintTop_toBottomOf="@+id/soul_state_tw" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -74,8 +75,8 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_height="22dp"
                     android:layout_width="22dp"
+                    android:layout_height="22dp"
                     android:layout_weight="1"
                     android:contentDescription="@string/happiness"
                     android:src="@drawable/ic_happiness" />
@@ -93,11 +94,10 @@
 
                 <com.google.android.material.materialswitch.MaterialSwitch
                     android:id="@+id/happiness"
+                    style="@style/Theme.AppCompat.Light"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:trackTint="@color/track_colors"
-                    style="@style/Theme.AppCompat.Light"
-                    />
+                    app:trackTint="@color/track_colors" />
             </LinearLayout>
 
             <!-- Optimism -->
@@ -128,9 +128,9 @@
 
                 <com.google.android.material.materialswitch.MaterialSwitch
                     android:id="@+id/optimism"
-                    app:trackTint="@color/track_colors"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    app:trackTint="@color/track_colors" />
             </LinearLayout>
 
         </LinearLayout>
@@ -171,9 +171,9 @@
                 <com.google.android.material.materialswitch.MaterialSwitch
                     android:id="@+id/kindness"
                     android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:trackTint="@color/brown"
-                    app:trackTint="@color/track_colors"
-                    android:layout_height="wrap_content" />
+                    app:trackTint="@color/track_colors" />
             </LinearLayout>
 
             <!-- Giving -->
@@ -203,8 +203,8 @@
                 <com.google.android.material.materialswitch.MaterialSwitch
                     android:id="@+id/giving"
                     android:layout_width="wrap_content"
-                    app:trackTint="@color/track_colors"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    app:trackTint="@color/track_colors" />
             </LinearLayout>
 
         </LinearLayout>
@@ -245,8 +245,8 @@
                 <com.google.android.material.materialswitch.MaterialSwitch
                     android:id="@+id/respect"
                     android:layout_width="wrap_content"
-                    app:trackTint="@color/track_colors"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    app:trackTint="@color/track_colors" />
             </LinearLayout>
 
             <!-- Ego -->
@@ -283,5 +283,16 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your Fav Quotes"
+        android:backgroundTint="@color/brown3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

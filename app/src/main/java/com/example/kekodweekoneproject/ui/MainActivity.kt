@@ -41,7 +41,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-
     fun toggleBottomNavVisibility(isEgo: Boolean) {
         if (isEgo) {
             binding.bottomNav.visibility = View.GONE

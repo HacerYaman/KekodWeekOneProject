@@ -1,12 +1,21 @@
 package com.example.kekodweekoneproject.ui.detail
 
-
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.kekodweekoneproject.data.source.local.FavoriteQuoteDao
+import com.example.kekodweekoneproject.domain.model.FavoriteQuote
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 import kotlin.random.Random
 
-class HappinessViewModel : ViewModel() {
+
+@HiltViewModel
+class HappinessViewModel @Inject constructor(
+    private val favoriteQuoteDao: FavoriteQuoteDao
+) : ViewModel() {
 
     private val quotes = listOf(
         "Happiness is not something ready-made. It comes from your own actions.\n— Dalai Lama",
@@ -24,5 +33,11 @@ class HappinessViewModel : ViewModel() {
 
     fun getRandomQuote() {
         _randomQuote.value = quotes[Random.nextInt(quotes.size)]
+    }
+
+    fun addToFavorites(quote: String) {
+        viewModelScope.launch {
+            favoriteQuoteDao.insert(FavoriteQuote(quote = quote))
+        }
     }
 }

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/gradient_background"
-    android:padding="@dimen/padding_medium"
+    android:padding="@dimen/padding_big"
     tools:context=".ui.detail.HappyFragment">
 
 
@@ -29,7 +29,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/favoriteIcon"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_marginStart="16dp"

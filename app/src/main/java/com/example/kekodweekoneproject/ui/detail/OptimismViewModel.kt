@@ -3,9 +3,19 @@ package com.example.kekodweekoneproject.ui.detail
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.kekodweekoneproject.data.source.local.FavoriteQuoteDao
+import com.example.kekodweekoneproject.domain.model.FavoriteQuote
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 import kotlin.random.Random
 
-class OptimismViewModel : ViewModel() {
+@HiltViewModel
+class OptimismViewModel @Inject constructor(
+    private val favoriteQuoteDao: FavoriteQuoteDao
+) : ViewModel() {
+
 
     private val quotes = listOf(
         "Keep your face always toward the sunshine—and shadows will fall behind you.\n— Walt Whitman",
@@ -23,5 +33,11 @@ class OptimismViewModel : ViewModel() {
 
     fun getRandomQuote() {
         _randomQuote.value = quotes[Random.nextInt(quotes.size)]
+    }
+
+    fun addToFavorites(quote: String) {
+        viewModelScope.launch {
+            favoriteQuoteDao.insert(FavoriteQuote(quote = quote))
+        }
     }
 }

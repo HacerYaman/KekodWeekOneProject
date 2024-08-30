@@ -90,6 +90,7 @@ dependencies {
     // Room
     implementation(libs.room.runtime)
     kapt(libs.room.compiler)
+    implementation ("androidx.room:room-ktx:2.5.0")
 
     // Hilt
     implementation(libs.hilt.android)

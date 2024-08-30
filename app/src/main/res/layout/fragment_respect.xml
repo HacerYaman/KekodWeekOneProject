@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background"
-    android:padding="@dimen/padding_medium"
+    android:padding="@dimen/padding_big"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.detail.RespectFragment">
 
@@ -28,7 +28,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/favoriteIcon"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_marginStart="16dp"

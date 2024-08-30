@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/padding_medium"
+    android:padding="@dimen/padding_big"
     android:background="@drawable/gradient_background"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.detail.KindnessFragment">
@@ -28,7 +28,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/favoriteIcon"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_marginStart="16dp"
