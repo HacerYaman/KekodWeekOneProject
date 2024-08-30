@@ -75,34 +75,30 @@ class SwitchViewModel @Inject constructor(
 
         val state = _switchState.value!!
 
-        if (state.ego) {
-            menu.add(0, R.id.switchFragment, 0, R.string.main)
-                .setIcon(R.drawable.ic_lotus_empty)
-        } else {
-            var order = 1
+        menu.add(0, R.id.switchFragment, 0, R.string.state)
+            .setIcon(R.drawable.ic_lotus_empty)
 
-            if (state.happiness) {
-                menu.add(0, R.id.happyFragment, order++, R.string.happiness)
-                    .setIcon(R.drawable.ic_happiness)
-            }
-            if (state.optimism) {
-                menu.add(0, R.id.optimismFragment, order++, R.string.optimism)
-                    .setIcon(R.drawable.ic_optimism)
-            }
-            if (state.kindness) {
-                menu.add(0, R.id.kindnessFragment, order++, R.string.kindness)
-                    .setIcon(R.drawable.ic_kindness)
-            }
-            if (state.giving) {
-                menu.add(0, R.id.givingFragment, order++, R.string.giving)
-                    .setIcon(R.drawable.ic_giving)
-            }
-            if (state.respect) {
-                menu.add(0, R.id.respectFragment, order++, R.string.respect)
-                    .setIcon(R.drawable.respecttt)
-            }
-            menu.add(0, R.id.switchFragment, 0, R.string.main)
-                .setIcon(R.drawable.ic_lotus_empty)
+        var order = 1
+
+        if (state.happiness) {
+            menu.add(0, R.id.happyFragment, order++, R.string.happiness)
+                .setIcon(R.drawable.ic_happiness)
+        }
+        if (state.optimism) {
+            menu.add(0, R.id.optimismFragment, order++, R.string.optimism)
+                .setIcon(R.drawable.ic_optimism)
+        }
+        if (state.kindness) {
+            menu.add(0, R.id.kindnessFragment, order++, R.string.kindness)
+                .setIcon(R.drawable.ic_kindness)
+        }
+        if (state.giving) {
+            menu.add(0, R.id.givingFragment, order++, R.string.giving)
+                .setIcon(R.drawable.ic_giving)
+        }
+        if (state.respect) {
+            menu.add(0, R.id.respectFragment, order++, R.string.respect)
+                .setIcon(R.drawable.respecttt)
         }
     }
 
